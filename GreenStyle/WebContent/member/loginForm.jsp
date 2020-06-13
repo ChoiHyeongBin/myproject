@@ -80,10 +80,10 @@ function isValue() {
 </td>
 </tr>
 <tr>
-<td><input type="text" name="uid" id="uid" style="width:300px; height:30px;"  placeholder="&nbsp;&nbsp;&nbsp;아이디"/></td>
+<td><input type="text" name="uid" id="uid" style="width:300px; height:30px;" value="test1" placeholder="&nbsp;&nbsp;&nbsp;아이디"/></td>
 </tr>
 <tr>
-<td><input type="password" name="pwd" id="pwd" style="width:300px; height:30px;"  placeholder="&nbsp;&nbsp;&nbsp;비밀번호" /></td>
+<td><input type="password" name="pwd" id="pwd" style="width:300px; height:30px;" value="1234"  placeholder="&nbsp;&nbsp;&nbsp;비밀번호" /></td>
 </tr>
 <td><br /></td>
 <tr>
