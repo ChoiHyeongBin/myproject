@@ -113,11 +113,11 @@ function chkValues(frm) {
 	<br /><img src="pdt-img/<%=csid %>/<%=ord.getOrdPdtList().get(inner).getPl_img1() %>" width="200" height="150"/></td>
 	<td width="*">별점 주기 : <span id="scoreNum"><%=score %></span>점 
 		(
-		<span id="star1" onclick="starBlack(1)">☆</span>
-		<span id="star2" onclick="starBlack(2)">☆</span>
-		<span id="star3" onclick="starBlack(3)">☆</span>
-		<span id="star4" onclick="starBlack(4)">☆</span>
-		<span id="star5" onclick="starBlack(5)">☆</span>
+		<span id="star1" onclick="starBlack(1)" style="cursor:pointer;">☆</span>
+		<span id="star2" onclick="starBlack(2)" style="cursor:pointer;">☆</span>
+		<span id="star3" onclick="starBlack(3)" style="cursor:pointer;">☆</span>
+		<span id="star4" onclick="starBlack(4)" style="cursor:pointer;">☆</span>
+		<span id="star5" onclick="starBlack(5)" style="cursor:pointer;">☆</span>
 		)
 <script>
 <%

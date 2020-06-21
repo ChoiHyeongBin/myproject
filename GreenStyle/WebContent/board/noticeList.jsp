@@ -27,7 +27,7 @@ System.out.println(seltag);
 <meta charset="UTF-8">
 <title>공지사항 메인 페이지</title>
 <style>
-#mainBox { position:absolute; top:50px; margin-left:300px; padding-left:50px; padding-right:50px; width:1300px; }
+#mainBox { position:relative; top:50px; margin-left:300px; padding-left:50px; padding-right:50px; width:1300px; height:1000px; }
 .nbox { float:right; }
 #upperLine { border-top:1px solid black; border-collapse: collapse; }
 #upperLine th, td { height:40px; padding:5px; }
@@ -158,3 +158,4 @@ if (cpage == epage) {
 </div>
 </body>
 </html>
+<%@ include file="../footer.jsp" %>

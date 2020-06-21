@@ -11,7 +11,6 @@ if (session.getAttribute("memberInfo") != null) {
 	   out.println("history.back();");
 	   out.println("</script>");
 	}
-
 %>
 <!DOCTYPE html>
 <html>
