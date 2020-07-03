@@ -14,9 +14,9 @@ if (session.getAttribute("memberInfo") != null) {
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원가입 -> 약관동의 폼</title>
 <style>
-#clause { width:800px; height:400px; border:1px solid black; overflow:auto;}
+#clause { width:800px; height:400px; border:1px solid black; overflow:auto; }
 #isAgree { align:absmiddle; }
-#total {position:relative; top:10%; left:30%;  width:800px;}
+#total { position:relative; top:10%; left:30%;  width:800px; height:1200px; }
 </style>
 <script>
 function chkAgree(frm) {

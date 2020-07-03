@@ -177,7 +177,7 @@ public class OrdDAO {
 		return result;
 	}
 	
-	// 상품 바로구매 메소드
+	// 구매자가 구매할 상품(들)의 목록을 ArrayList형으로 리턴하는 메소드
 	public ArrayList<CartInfo> getPreOrdList(HttpServletRequest request, String mlid) {
 		ArrayList<CartInfo> preOrdList = new ArrayList<CartInfo>();
 		Statement stmt = null;

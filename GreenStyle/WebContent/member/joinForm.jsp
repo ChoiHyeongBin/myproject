@@ -31,7 +31,7 @@ int by = today.get(Calendar.YEAR);
 .txt2 { width:50px; height:20px; }
 .required {color:red;}
 #comment td { color:gray; font-size:3;}
-#total {position:relative; top:10%; left:30%; width:800px;}
+#total { position:relative; top:10%; left:30%; width:800px; height:1200px; }
 #redFont { color:red; font-weight:bold; }
 #blueFont { color:blue; font-weight:bold; }
 </style>

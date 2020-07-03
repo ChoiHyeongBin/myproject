@@ -18,9 +18,9 @@ if (session.getAttribute("memberInfo") != null) {
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-body {overflow-x:hidden;}
+body { overflow-x:hidden; }
 #log { border:1px solid black; }
-.menu { text-align:center; width:400px; height:200px; }
+.menu { text-align:center; width:400px; height:300px; }
 #tab02 { display:none; }
 #mem { border:none; background-color:white; border-bottom:1px solid black; font-weight:bold; font-size:15px; }
 #nonMem { border:none; background-color:white; border-bottom:1px solid #c9c5c5; font-size:15px; }
