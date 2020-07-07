@@ -11,10 +11,10 @@ public class NoticeListAction implements Action {
 
 		String schType = request.getParameter("schType");	// 검색 조건
 		String keyword = request.getParameter("keyword");	// 검색어
-		String kind = request.getParameter("kind");	// 분류
+		String kind = request.getParameter("kind");			// 분류
 
 		String where = ""; // 쿼리에 추가할 조건
-		String seltag = null;
+		String seltag = null;	// 공지사항 분류
 		
 		if (schType != null && !schType.equals("") && keyword != null && !keyword.equals("")) {
 			if (schType.equals("tc")) {	// 제목 + 내용 검색일 경우
@@ -32,7 +32,7 @@ public class NoticeListAction implements Action {
 				where = " and nl_kind = 'b' ";
 				seltag = "t3";
 			}
-		} else {
+		} else {	// 전체 이면
 			seltag = "t1";
 		}
 

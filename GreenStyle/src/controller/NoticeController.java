@@ -22,7 +22,7 @@ public class NoticeController extends HttpServlet {
     	String contextPath = request.getContextPath();
     	String command = RequestURI.substring(contextPath.length());
     	// '/list.notice'
-    	System.out.println(command);
+    	System.out.println("command : " + command);
     	
     	Action action = null;
     	ActionForward forward = null;

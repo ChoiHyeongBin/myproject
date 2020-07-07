@@ -19,7 +19,7 @@ if (schType == null)	schType = "";
 if (keyword == null)	keyword = "";
 String args = "&schType=" + schType + "&keyword=" + keyword;
 String seltag = (String)request.getAttribute("seltag");
-System.out.println(seltag);
+System.out.println("noticeList의 seltag : " + seltag);
 %>
 <!DOCTYPE html>
 <html>
@@ -29,7 +29,7 @@ System.out.println(seltag);
 <style>
 #mainBox { position:relative; top:50px; margin-left:300px; padding-left:50px; padding-right:50px; width:1300px; height:1000px; }
 .nbox { float:right; }
-#upperLine { border-top:1px solid black; border-collapse: collapse; }
+#upperLine { border-top:1px solid black; border-collapse:collapse; }
 #upperLine th, td { height:40px; padding:5px; }
 .underLine { border-bottom:1px solid black; }
 .underLine2 { border-bottom:1px solid #e2e2e2; }
@@ -55,7 +55,7 @@ System.out.println(seltag);
 		<option value="content" <% if (schType.equals("content")) { %>selected="selected"<% } %>>내용</option>
 		<option value="tc" <% if (schType.equals("tc")) { %>selected="selected"<% } %>>제목+내용</option>
 	</select>
-	<input type="text" style="width:200px; height:28px;" name="keyword"/>
+	<input type="text" style="width:200px; height:28px;" name="keyword" />
 	<input type="submit" style="width:80px; height:28px;" value="검 색" />
 </div>
 </form>
@@ -79,6 +79,7 @@ if (noticeList.size() > 0) {	// 공지사항 목록이 있으면
 		lnk = "<a href='view.notice?cpage=" + cpage + args + "&num=" + notice.getNl_num() + "'>";
 		String title = notice.getNl_title();
 		if (title.length() > 27)	title = title.substring(0, 27) + "...";
+		// 공지사항 제목이 27글자 이상이면 글자를 자름
 %>
 <tr align="center">
 <td class="underLine2"><%=num %></td>
@@ -91,7 +92,7 @@ if (notice.getNl_kind().equals("a")) {
 }
 %>
 <td class="underLine2"><%=val %></td>
-<td class="underLine2" align="left">&nbsp;<%=lnk + title + "</a>" %></td>
+<td class="underLine2" align="center">&nbsp;<%=lnk + title + "</a>" %></td>
 <td class="underLine2"><%=notice.getNl_read() %></td>
 <td class="underLine2"><%=notice.getNl_date().substring(2, 10) %></td>
 </tr>
@@ -106,32 +107,33 @@ if (notice.getNl_kind().equals("a")) {
 <%
 lnk = "";
 
-//첫 페이지 이동 버튼
+// 첫 페이지 이동 버튼
 if (cpage == 1) {
-	out.println("<<&nbsp;&nbsp;&nbsp;");
+	out.println("<<&nbsp;&nbsp;&nbsp;");	// out.println : 웹에서 출력, System.out.println : 콘솔창 출력
 } else {
 	lnk = "<a href='list.notice?cpage=1" + args + "'>";
 	out.println(lnk + " <<</a>&nbsp;&nbsp;&nbsp;");
 }
 
-//이전 페이지 이동 버튼
+// 이전 페이지 이동 버튼
 if (cpage == 1) {
 	out.println("<&nbsp;&nbsp;&nbsp;");
 } else {
-		lnk = "<a href='list.notice?cpage=" + (cpage - 1) + args + "'>";
-		out.println(lnk + " <</a>&nbsp;&nbsp;&nbsp;");
+	lnk = "<a href='list.notice?cpage=" + (cpage - 1) + args + "'>";
+	out.println(lnk + " <</a>&nbsp;&nbsp;&nbsp;");
 }
 
+// 페이지 번호
 for (int i = 1; i <= mpage; i++) {
 	lnk = "<a href='list.notice?cpage=" + i + args + "'>";
 	if (i == cpage) {
-		out.println("&nbsp;&nbsp;<b>" + i + "</b>&nbsp;&nbsp;");
+		out.println("&nbsp;&nbsp;<b>" + i + "</b>&nbsp;&nbsp;");	// b 태그 : 글자를 굵게 표시하는 태그로 bold의 약자
 	} else {
 		out.println("&nbsp;&nbsp;" + lnk + i + "</a>&nbsp;&nbsp;");
 	}
 }
 
-//다음 페이지 이동 버튼
+// 다음 페이지 이동 버튼
 if (cpage == mpage) {
 	out.println("&nbsp;&nbsp;&nbsp; > ");
 } else {

@@ -32,6 +32,7 @@ public class NoticeDAO {
 		int rcount = 0;
 		Statement stmt = null;
 		ResultSet rs = null;
+		
 		try {
 			String sql = "select count(*) from t_notice_list where 1=1 " + where;
 			stmt = conn.createStatement();
@@ -48,15 +49,18 @@ public class NoticeDAO {
 		return rcount;
 	} 
 	
+	// 공지사항의 목록을 ArrayList형태로 리턴하는 메소드
 	public ArrayList<NoticeInfo> getNoticeList(String where, int cpage, int limit) {
 		ArrayList<NoticeInfo> noticeList = new ArrayList<NoticeInfo>(); 
 		Statement stmt = null;
 		ResultSet rs = null;
 		NoticeInfo noticeInfo = null;
+		
 		try {
 			int start = (cpage - 1) * limit;
 			String sql = "select * from t_notice_list where 1=1 " + where;
 			sql += " order by nl_num desc limit " + start + ", " + limit;
+			System.out.println(sql);
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
@@ -126,6 +130,7 @@ public class NoticeDAO {
 		
 		try {
 			String sql = "select * from t_notice_list where nl_num = " + num;
+			System.out.println(sql);
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			

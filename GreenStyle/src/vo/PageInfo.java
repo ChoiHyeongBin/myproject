@@ -2,8 +2,10 @@ package vo;
 
 public class PageInfo {
 	private int cpage, mpage, spage, epage, rcount;
+	// 현재 페이지번호, 마지막 페이지번호, 시작 및 종료 페이지 번호, 전체 글 개수
 	private String schType, schType2, keyword, sdate, edate;
-
+	// 검색조건, 검색조건2, 검색어, 시작날짜, 종료날짜
+	
 	public String getSchType() {
 		return schType;
 	}

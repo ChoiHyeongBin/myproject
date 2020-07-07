@@ -17,6 +17,7 @@ public class NoticeService {
 		noticeDAO.setConnection(conn);
 		rcount = noticeDAO.getListCount(where);
 		close(conn);
+		
 		return rcount;
 	}
 	
@@ -28,6 +29,7 @@ public class NoticeService {
 		noticeDAO.setConnection(conn);
 		noticeList = noticeDAO.getNoticeList(where, cpage, limit);
 		close(conn);
+		
 		return noticeList;
 	}
 	
