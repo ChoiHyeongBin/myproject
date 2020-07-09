@@ -82,7 +82,7 @@ if (noticeList.size() > 0) {	// 공지사항 목록이 있으면
 		// 공지사항 제목이 27글자 이상이면 글자를 자름
 %>
 <tr align="center">
-<td class="underLine2"><%=num %></td>
+<td class="underLine2"><%=num %></td>	<!-- DB에서 자동증가(글번호) 값이 바뀔 수도 있으므로 num으로 처리 -->
 <%
 String val = "";
 if (notice.getNl_kind().equals("a")) {
@@ -109,18 +109,18 @@ lnk = "";
 
 // 첫 페이지 이동 버튼
 if (cpage == 1) {
-	out.println("<<&nbsp;&nbsp;&nbsp;");	// out.println : 웹에서 출력, System.out.println : 콘솔창 출력
+	out.println(" << &nbsp;&nbsp;&nbsp;");	// out.println : 웹에서 출력, System.out.println : 콘솔창 출력
 } else {
 	lnk = "<a href='list.notice?cpage=1" + args + "'>";
-	out.println(lnk + " <<</a>&nbsp;&nbsp;&nbsp;");
+	out.println(lnk + " << </a>&nbsp;&nbsp;&nbsp;");
 }
 
 // 이전 페이지 이동 버튼
 if (cpage == 1) {
-	out.println("<&nbsp;&nbsp;&nbsp;");
+	out.println(" < &nbsp;&nbsp;&nbsp;");
 } else {
 	lnk = "<a href='list.notice?cpage=" + (cpage - 1) + args + "'>";
-	out.println(lnk + " <</a>&nbsp;&nbsp;&nbsp;");
+	out.println(lnk + " < </a>&nbsp;&nbsp;&nbsp;");
 }
 
 // 페이지 번호
@@ -141,9 +141,9 @@ if (cpage == mpage) {
 	out.println("&nbsp;&nbsp;&nbsp;" + lnk + " > </a>");
 }
 
-//마지막 페이지 이동 버튼
+// 마지막 페이지 이동 버튼
 if (cpage == epage) {
-	out.println("&nbsp;&nbsp;&nbsp; >>");
+	out.println("&nbsp;&nbsp;&nbsp; >> ");
 } else {
 	lnk = "<a href='list.notice?cpage=" + epage + args + "'>";
 	out.println("&nbsp;&nbsp;&nbsp;" + lnk + " >> </a>");
@@ -152,7 +152,7 @@ if (cpage == epage) {
 </td></tr>
 <%
 } else {	// 공지사항 목록이 없으면
-	out.println("<tr height='50'><th colspan='4'>공지사항 검색 결과가 없습니다.</th></tr>");
+	out.println("<tr height='80'><th colspan='5'>공지사항 검색 결과가 없습니다.</th></tr>");
 }
 %>
 </table>

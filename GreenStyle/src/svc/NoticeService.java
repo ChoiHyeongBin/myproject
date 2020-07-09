@@ -12,7 +12,7 @@ public class NoticeService {
 	// 공지사항의 목록 개수를 리턴하는 메소드
 	public int getListCount(String where) {
 		int rcount = 0;
-		NoticeDAO noticeDAO = NoticeDAO.getInstance();
+		NoticeDAO noticeDAO = NoticeDAO.getInstance();	// getInstance() : 싱글턴패턴이며, 하나의 인스턴스만 가지고 공유해서 쓰임
 		Connection conn = getConnection();
 		noticeDAO.setConnection(conn);
 		rcount = noticeDAO.getListCount(where);
@@ -85,10 +85,11 @@ public class NoticeService {
 		noticeDAO.setConnection(conn);
 		noticeInfo = noticeDAO.getNotice(num);
 		close(conn);
+		
 		return noticeInfo;
 	}
 	
-	// 공지사항 게시글 조회수를 int형으로 리턴하는 메소드 
+	// 공지사항 게시글의 조회수를 증가시킨 후 결과를 int형으로 리턴하는 메소드
 	public int updateRead(int num) {
 		NoticeDAO noticeDAO = NoticeDAO.getInstance();
 		Connection conn = getConnection();

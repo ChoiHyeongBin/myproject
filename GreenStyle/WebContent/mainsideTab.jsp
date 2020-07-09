@@ -20,7 +20,7 @@ request.setCharacterEncoding("utf-8");
 	ul { padding-left: 0; }
 	ul li { list-style-type: none; }
 	li { width:200px;}
-	a { color: inherit; text-decoration: none; text-align:center; }
+	a { color:inherit; text-decoration:none; text-align:center; }
 	img { vertical-align:middle; } 
 	 /* left-tab */
 	.page-left { background-color:rgba(200,200,200,0); position:fixed; top:0px; width:200px; min-height:300px; z-index:1;}

@@ -3,7 +3,7 @@
 <%@ page import="vo.*" %>
 <%@ include file="../mainsideTab.jsp" %>
 <%
-NoticeInfo noticeInfo = (NoticeInfo) request.getAttribute("noticeInfo");
+NoticeInfo noticeInfo = (NoticeInfo)request.getAttribute("noticeInfo");
 // 보려는 공지사항 게시글을 NoticeInfo형 인스턴스에 담음
 
 String cpage = (String)request.getAttribute("cpage");		// 현재 페이지 번호
@@ -51,6 +51,7 @@ String args = "?cpage=" + cpage + "&schType=" + schType + "&keyword=" + keyword;
 	<th class="underLine" width="10%">구분</th>
 <%
 String val = "";
+
 if (noticeInfo.getNl_kind().equals("a")) {
 	val = "알림/소식";
 } else if (noticeInfo.getNl_kind().equals("b")) {
@@ -64,29 +65,40 @@ if (noticeInfo.getNl_kind().equals("a")) {
 	<td class="underLine" width="10%"><%=noticeInfo.getNl_read() %></td>
 </tr>
 <tr><td></td><td colspan="7"><%=noticeInfo.getNl_content().replace("\r\n", "<br />") %></td></tr>
+<!-- "\r\n" 문자열을 찾아 "<br />" 문자열로 바꿈 -->
 </table>
 <br /><br />
 <table width="1300" id="upperLine2">
-<tr><td class="underLine2" width="30px"></td><td class="underLine2" width="10%">이전글</td><td class="underLine2" width="*" align="left">
+<tr>
+	<td class="underLine2" width="30px"></td>
+	<td class="underLine2" width="10%">이전글</td>
+	<td class="underLine2" width="*" align="left">
 <%
 String lnk = "";
+
 if (noticeInfo.getNl_num() == 1) {
 	out.println("이전 글이 없습니다.");
-} else {
-	lnk = "<a href='view.notice" + args + "&num=" + (noticeInfo.getNl_num()-1) + "'>";
+} else {	// 이전 글이 존재한다면
+	lnk = "<a href='view.notice" + args + "&num=" + (noticeInfo.getNl_num() - 1) + "'>";
 	out.println(lnk + prev +"</a>&nbsp;&nbsp;&nbsp;");
 }
-%></td></tr>
-<tr><td class="underLine2"></td><td class="underLine2">다음글</td><td class="underLine2">
+%>
+	</td>
+</tr>
+<tr>
+	<td class="underLine2"></td>
+	<td class="underLine2">다음글</td>
+	<td class="underLine2">
 <%
 if (noticeInfo.getNl_num() == noticeCount) {
 	out.println("다음 글이 없습니다.");
-} else {
-	lnk = "<a href='view.notice" + args + "&num=" + (noticeInfo.getNl_num()+1) + "'>";
-	out.println(lnk + next +"</a>&nbsp;&nbsp;&nbsp;");
+} else {	// 다음 글이 존재한다면
+	lnk = "<a href='view.notice" + args + "&num=" + (noticeInfo.getNl_num() + 1) + "'>";
+	out.println(lnk + next + "</a>&nbsp;&nbsp;&nbsp;");
 }
 %>
-</td></tr>
+	</td>
+</tr>
 <tr><td align="center" colspan="3"><br /><input type="button" id="btn" value="목 록" onclick="location.href='list.notice<%=args %>';"/></td></tr>
 </table>
 </form>

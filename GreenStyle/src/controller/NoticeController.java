@@ -33,7 +33,8 @@ public class NoticeController extends HttpServlet {
     			forward = action.execute(request, response);
     		} catch (Exception e) { 
     			System.out.println("/list.notice에서 문제 발생");
-    			e.printStackTrace(); 
+    			e.printStackTrace();
+    			// 메소드가 내부적으로 예외 결과를 화면에 출력
     		}
     		
     	} else if (command.equals("/in.notice")) {	// 글 등록화면이면

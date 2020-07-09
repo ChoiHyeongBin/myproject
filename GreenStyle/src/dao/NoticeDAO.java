@@ -206,6 +206,7 @@ public class NoticeDAO {
 	public int updateRead(int num) {
 		int result = 0;
 		Statement stmt = null;
+		
 		try {
 			String sql = "update t_notice_list set ";
 			sql += "nl_read = nl_read + 1 where nl_num = " + num;
