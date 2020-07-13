@@ -23,8 +23,8 @@ public class NoticeViewAction implements Action {
 		int maxNotice = noticeService.getListCount("");
 		// 글의 최대 개수를 가져옴
 		
-		String prev = noticeService.getPrevTitle(num);
-		String next = noticeService.getNextTitle(num);
+		String prev = noticeService.getPrevTitle(num);	// 이전 글
+		String next = noticeService.getNextTitle(num);	// 다음 글
 		
 		if (noticeInfo == null) { // 게시글 정보가 없으면
 			response.setContentType("html/text; charset=utf-8");	// 서블릿에서 한글로 출력하기 위해

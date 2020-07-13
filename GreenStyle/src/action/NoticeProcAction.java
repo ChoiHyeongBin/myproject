@@ -17,6 +17,7 @@ public class NoticeProcAction implements Action {
 		
 		if (wtype.equals("in")) {	// 공지사항 등록이면
 			nlResult = noticeService.insertNotice(request);
+			System.out.println("Proc의 nlResult : " + nlResult);
 			result = Integer.parseInt(nlResult.substring(0, nlResult.indexOf(':')));
 			nlnum = Integer.parseInt(nlResult.substring(nlResult.indexOf(':') + 1));
 			lnk = "view.notice?cpage=1&num=" + nlnum;
@@ -41,6 +42,8 @@ public class NoticeProcAction implements Action {
 		ActionForward forward = new ActionForward();
 		if (result == 1) {
 			forward.setRedirect(true);	// sendRedirect 방식으로 이동시킴
+			// 최초 요청을 받은 URL1에서 클라이언트에 redirect할 URL2를 리턴하고, 클라이언트에게 전혀 새로운 요청을 생성하여 URL2에 다시 요청을 보냄 
+			// 따라서 처음 보냈던 최초의 요청정보는 더이상 유효하지 않게 됨
     		forward.setPath(lnk);
 		} else {
 			response.setContentType("html/text; charset=utf-8");

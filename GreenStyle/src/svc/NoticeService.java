@@ -103,21 +103,25 @@ public class NoticeService {
 		return result;
 	}
 	
+	// 이전 글 리턴 메소드
 	public String getPrevTitle(int num) {
 		NoticeDAO noticeDAO = NoticeDAO.getInstance();
 		Connection conn = getConnection();
 		noticeDAO.setConnection(conn);
 		String prev = noticeDAO.getPrevTitle(num);
 		close(conn);
+		
 		return prev;
 	}
 	
+	// 다음 글 리턴 메소드
 	public String getNextTitle(int num) {
 		NoticeDAO noticeDAO = NoticeDAO.getInstance();
 		Connection conn = getConnection();
 		noticeDAO.setConnection(conn);
 		String next = noticeDAO.getNextTitle(num);
 		close(conn);
+		
 		return next;
 	}
 }

@@ -4,6 +4,7 @@
 <%
 request.setCharacterEncoding("utf-8");
 String wtype = request.getParameter("wtype");
+System.out.println("wtype : " + wtype);
 String btn = "등록";
 
 int nlnum = 0;

@@ -9,7 +9,8 @@ NoticeInfo noticeInfo = (NoticeInfo)request.getAttribute("noticeInfo");
 String cpage = (String)request.getAttribute("cpage");		// 현재 페이지 번호
 String schType = (String)request.getAttribute("schType");	// 검색조건
 String keyword = (String)request.getAttribute("keyword");	// 검색어
-int noticeCount = (int)request.getAttribute("maxNotice");
+int maxNotice = (int)request.getAttribute("maxNotice");
+System.out.println("maxNotice : " + maxNotice);
 String prev = (String)request.getAttribute("prev");
 String next = (String)request.getAttribute("next");
 if (schType == null)	schType = "";
@@ -23,7 +24,7 @@ String args = "?cpage=" + cpage + "&schType=" + schType + "&keyword=" + keyword;
 <meta charset="UTF-8">
 <title>공지사항 보기 폼</title>
 <style>
-#mainBox { position:absolute; top:50px; margin-left:300px; padding-left:50px; padding-right:50px; width:1300px; }
+#mainBox { position:relative; top:50px; margin-left:300px; padding-left:50px; padding-right:50px; width:1300px; height:1000px; }
 .nbox { float:right; }
 #upperLine { border-top:1px solid black; border-collapse: collapse; }
 #upperLine th, td { height:40px; padding:5px; }
@@ -31,7 +32,7 @@ String args = "?cpage=" + cpage + "&schType=" + schType + "&keyword=" + keyword;
 #upperLine2 th, td { height:20px; padding:5px; }
 .underLine { border-bottom:1px solid black; }
 .underLine2 { border-bottom:1px solid #e2e2e2; }
-#btn { width:200px; height:50px; background-color:black; color:white; }
+#btn { width:200px; height:50px; background-color:black; color:white; border:1px solid black; }
 </style>
 </head>
 <body>
@@ -90,7 +91,8 @@ if (noticeInfo.getNl_num() == 1) {
 	<td class="underLine2">다음글</td>
 	<td class="underLine2">
 <%
-if (noticeInfo.getNl_num() == noticeCount) {
+if (noticeInfo.getNl_num() == maxNotice) {
+	// nl_num의 값을 정렬하지 않으면 비교 불가능
 	out.println("다음 글이 없습니다.");
 } else {	// 다음 글이 존재한다면
 	lnk = "<a href='view.notice" + args + "&num=" + (noticeInfo.getNl_num() + 1) + "'>";
@@ -99,9 +101,12 @@ if (noticeInfo.getNl_num() == noticeCount) {
 %>
 	</td>
 </tr>
-<tr><td align="center" colspan="3"><br /><input type="button" id="btn" value="목 록" onclick="location.href='list.notice<%=args %>';"/></td></tr>
+<tr><td align="center" colspan="3"><br /><br />
+	<input type="button" id="btn" value="목 록" onclick="location.href='list.notice<%=args %>';" />
+</td></tr>
 </table>
 </form>
 </div>
 </body>
 </html>
+<%@ include file="../footer.jsp" %>

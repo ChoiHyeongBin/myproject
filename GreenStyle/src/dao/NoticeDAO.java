@@ -100,6 +100,7 @@ public class NoticeDAO {
 		
 		try {
 			String sql = "select max(nl_num) + 1 from t_notice_list";
+			System.out.println(sql);
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			if (rs.next())	nlnum = rs.getInt(1);
@@ -161,6 +162,7 @@ public class NoticeDAO {
 	public int updateNotice(HttpServletRequest request) {
 		int result = 0;
 		Statement stmt = null;
+		
 		try {
 			String num = request.getParameter("num");
 			String title = request.getParameter("title").trim().replaceAll("'", "''");
@@ -186,6 +188,7 @@ public class NoticeDAO {
 	public int deleteNotice(HttpServletRequest request) {
 		int result = 0;
 		Statement stmt = null;
+		
 		try {
 			String num = request.getParameter("num");
 			
@@ -222,17 +225,23 @@ public class NoticeDAO {
 		return result;
 	}
 	
+	// 이전 글 리턴 메소드
 	public String getPrevTitle(int num) {
 		Statement stmt = null;
 		ResultSet rs = null;
 		String prev = "";
 		
 		try {
-			String sql = "select nl_title from t_notice_list where nl_num=" + (num-1);
+			String sql = "select nl_title from t_notice_list where nl_num = " + (num - 1);
+			System.out.println(sql);
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			
 			if (rs.next()) prev = rs.getString(1);
+			// ResultSet에 저장된 Select문 실행 결과를 행단위로 1행씩 넘겨서 만약에 다음 행이 있으면 true, 다음 행이 없으면 false를 반환하는 함수 
+			// while(rs.next())를 하게되면 한 루프가 돌아갈 때 마다 1행씩 넘겨주다가 더이상 행이 없으면 while문이 끝나게 됨
+			// getString() 함수는 해당 순서의 열에있는 데이터를 String형으로 받아옴
+			// ex) rs.getString(2)를 하게되면 2번째 열에있는 데이터를 가져오게 됨
 
 		} catch (Exception e) {
 			System.out.println("getPrevTitle() 메소드에서 오류 발생");
@@ -240,16 +249,19 @@ public class NoticeDAO {
 			close(rs);
 			close(stmt);
 		}
+		
 		return prev;
 	}
 	
+	// 다음 글 리턴 메소드
 	public String getNextTitle(int num) {
 		Statement stmt = null;
 		ResultSet rs = null;
 		String next = "";
 		
 		try {
-			String sql = "select nl_title from t_notice_list where nl_num=" + (num+1);
+			String sql = "select nl_title from t_notice_list where nl_num = " + (num + 1);
+			System.out.println(sql);
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			
@@ -261,6 +273,7 @@ public class NoticeDAO {
 			close(rs);
 			close(stmt);
 		}
+		
 		return next;
 	}
 }

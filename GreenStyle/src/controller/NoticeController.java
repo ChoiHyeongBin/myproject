@@ -19,10 +19,12 @@ public class NoticeController extends HttpServlet {
     // 요청방식에 상관없이 일괄적으로 요청을 처리하기 위한 메소드
     	request.setCharacterEncoding("utf-8");
     	String RequestURI = request.getRequestURI();
+    	// 프로젝트 패스 얻어옴(프로젝트와 파일경로까지 얻어옴)
     	String contextPath = request.getContextPath();
+    	// 프로젝트 패스 얻어옴
     	String command = RequestURI.substring(contextPath.length());
-    	// '/list.notice'
     	System.out.println("command : " + command);
+    	// command에는 '/list.notice'가 들어가게 됨
     	
     	Action action = null;
     	ActionForward forward = null;
@@ -39,8 +41,16 @@ public class NoticeController extends HttpServlet {
     		
     	} else if (command.equals("/in.notice")) {	// 글 등록화면이면
     		forward = new ActionForward();
+    		System.out.println(forward);
     		forward.setPath("/board/noticeForm.jsp?wtype=in");
     		
+    	} else if (command.equals("/proc.notice")) {	// 처리작업이면
+		// 공지사항 등록, 수정, 삭제 등의 작업을 처리
+			action = new NoticeProcAction();
+			try {
+				forward = action.execute(request, response);
+			} catch(Exception e) { e.printStackTrace(); }
+    	
     	} else if (command.equals("/view.notice")) { // 보기 작업이면
     		action = new NoticeViewAction();
     		try {
