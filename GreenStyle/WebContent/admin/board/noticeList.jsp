@@ -87,7 +87,8 @@ if (getNoticeList.size() > 0) {
 </table>
 <br />
 <table>
-<tr><td>
+<tr>
+	<td>
 <%
 	lnk = "";
 	
@@ -116,7 +117,11 @@ if (getNoticeList.size() > 0) {
 		out.println("&nbsp;&nbsp;&nbsp;" + lnk + " > </a>");
 	}
 %>
-</td></tr>
+	</td>
+	<td>
+		<input type="button" value="공지사항 등록" onclick="location.href='in.notice';" />
+	</td>
+</tr>
 <%
 } else {
 	out.println("<tr height='50'><th colspan='6'>검색 결과가 없습니다.</th></tr>");

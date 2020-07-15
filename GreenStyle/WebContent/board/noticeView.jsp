@@ -32,7 +32,7 @@ String args = "?cpage=" + cpage + "&schType=" + schType + "&keyword=" + keyword;
 #upperLine2 th, td { height:20px; padding:5px; }
 .underLine { border-bottom:1px solid black; }
 .underLine2 { border-bottom:1px solid #e2e2e2; }
-#btn { width:200px; height:50px; background-color:black; color:white; border:1px solid black; }
+#btn { width:200px; height:50px; background-color:black; color:white; border:1px solid black; cursor:pointer; }
 </style>
 </head>
 <body>

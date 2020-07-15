@@ -11,7 +11,7 @@ public class NoticeProcAction implements Action {
 		request.setCharacterEncoding("utf-8");
 		String wtype = request.getParameter("wtype");
 		
-		int result = 0, nlnum = 0;
+		int result = 0, nlNum = 0;
 		String lnk = "", nlResult = "";
 		NoticeService noticeService = new NoticeService();
 		
@@ -19,8 +19,11 @@ public class NoticeProcAction implements Action {
 			nlResult = noticeService.insertNotice(request);
 			System.out.println("Proc의 nlResult : " + nlResult);
 			result = Integer.parseInt(nlResult.substring(0, nlResult.indexOf(':')));
-			nlnum = Integer.parseInt(nlResult.substring(nlResult.indexOf(':') + 1));
-			lnk = "view.notice?cpage=1&num=" + nlnum;
+			// indexOf() : 지정된 데이터(':')의 위치를 찾아 인덱스를 리턴(없으면 -1)
+			System.out.println("Proc의 result : " + result);
+			nlNum = Integer.parseInt(nlResult.substring(nlResult.indexOf(':') + 1));
+			System.out.println("Proc의 nlNum :  " + nlNum);
+			lnk = "view.notice?cpage=1&num=" + nlNum;
 			
 		} else if (wtype.equals("up")) {	// 공지사항 수정이면
 			result = noticeService.updateNotice(request);

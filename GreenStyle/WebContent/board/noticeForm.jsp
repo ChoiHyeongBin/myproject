@@ -7,14 +7,14 @@ String wtype = request.getParameter("wtype");
 System.out.println("wtype : " + wtype);
 String btn = "등록";
 
-int nlnum = 0;
+int nlNum = 0;
 String args = "", title = "", content = "";
 String cpage = "", schType = "", keyword = "";
 
 if (wtype.equals("up")) {	// 공지사항 수정일 경우
 	btn = "수정";
-	NoticeInfo noticeInfo = (NoticeInfo) request.getAttribute("noticeInfo");
-	nlnum = noticeInfo.getNl_num();
+	NoticeInfo noticeInfo = (NoticeInfo)request.getAttribute("noticeInfo");
+	nlNum = noticeInfo.getNl_num();
 	title = noticeInfo.getNl_title();
 	content = noticeInfo.getNl_content();
 	
@@ -30,12 +30,12 @@ if (wtype.equals("up")) {	// 공지사항 수정일 경우
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항 글 수정 폼</title>
+<title>공지사항 글 <%=btn %> 폼</title>
 </head>
 <body>
-<h2>공지사항 글<%=btn %> 폼</h2>
-<form name="frmNotice" action="proc.notice" method="post">	<!-- controller로 이동 -->
-<input type="hidden" name="num" value="<%=nlnum %>" />
+<h2>공지사항 글 <%=btn %> 폼</h2>
+<form name="frmNotice" action="proc.notice" method="post">	<!-- controller로 이동, post 방식은 리소스를 생성/변경하기 위해 설계됨 -->
+<input type="hidden" name="num" value="<%=nlNum %>" />	<!-- name으로 파라미터 값을 보낼 수 있음 -->
 <input type="hidden" name="wtype" value="<%=wtype %>" />
 <input type="hidden" name="cpage" value="<%=cpage %>" />
 <input type="hidden" name="schType" value="<%=schType %>" />
@@ -51,11 +51,13 @@ if (wtype.equals("up")) {	// 공지사항 수정일 경우
 </tr>
 </table>
 <table width="600">
-<tr><td align="center">
-	<input type="submit" value="공지사항 <%=btn %>" />
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<input type="reset" value="다시 입력" />
-</td></tr>
+<tr>
+	<td align="center">
+		<input type="submit" value="공지사항 <%=btn %>" />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="reset" value="다시 입력" />
+	</td>
+</tr>
 </table>
 </form>
 </body>

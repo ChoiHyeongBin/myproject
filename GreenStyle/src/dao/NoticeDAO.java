@@ -93,7 +93,7 @@ public class NoticeDAO {
 	
 	// 새 공지사항을 등록시키는 메소드
 	public String insertNotice(HttpServletRequest request) {
-		int result = 0, nlnum = 1;
+		int result = 0, nlNum = 1;
 		String nlResult = "";
 		Statement stmt = null;
 		ResultSet rs = null;	// ai가 아니라서 글번호 만들기 위해 필요함
@@ -103,15 +103,19 @@ public class NoticeDAO {
 			System.out.println(sql);
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
-			if (rs.next())	nlnum = rs.getInt(1);
+			if (rs.next())	nlNum = rs.getInt(1);
 			
 			String title = request.getParameter("title").trim().replaceAll("'", "''");
+			// trim() : 문자열 좌우의 공백을 제거하는 함수
+			// replaceAll() : "'"를 찾아서 "''"로 바꿔줌, 만약 abc가 들어가면 a or b or c가 들어간 문자열 전체를 바꿔줌
 			String content = request.getParameter("content").trim().replaceAll("'", "''");
 			
-			sql = "insert into t_notice_list (nl_num, nl_title, nl_content, al_num) values (" + nlnum + ", '";
+			sql = "insert into t_notice_list (nl_num, nl_title, nl_content, al_num) values (" + nlNum + ", '";
 			sql += title + "', '" + content + "', 0)";
+			System.out.println(sql);
 			result = stmt.executeUpdate(sql);
-			nlResult = result + ":" + nlnum;
+			nlResult = result + ":" + nlNum;
+			
 		} catch (Exception e) {
 			System.out.println("insertNotice() 메소드에서 오류 발생");
 		} finally {
