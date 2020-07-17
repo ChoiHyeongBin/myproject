@@ -29,7 +29,7 @@ public class NoticeController extends HttpServlet {
     	Action action = null;
     	ActionForward forward = null;
     	
-    	if (command.equals("/list.notice")) {	// 목록화면이면
+    	if (command.equals("/list.notice")) {	// 목록 화면이면
     		action = new NoticeListAction();
     		try {
     			forward = action.execute(request, response);
@@ -44,7 +44,7 @@ public class NoticeController extends HttpServlet {
     		System.out.println(forward);
     		forward.setPath("/board/noticeForm.jsp?wtype=in");
     		
-    	} else if (command.equals("/proc.notice")) {	// 처리작업이면
+    	} else if (command.equals("/proc.notice")) {	// 처리 작업이면
 		// 공지사항 등록, 수정, 삭제 등의 작업을 처리
 			action = new NoticeProcAction();
 			try {

@@ -171,11 +171,13 @@ public class NoticeDAO {
 			String num = request.getParameter("num");
 			String title = request.getParameter("title").trim().replaceAll("'", "''");
 			String content = request.getParameter("content").trim().replaceAll("'", "''");
+			// ' ∏¶ '' ∑Œ πŸ≤„æﬂ ¿ŒΩƒ¿Ã µ 	
 			
 			String sql = "update t_notice_list set ";
 			sql += "nl_title = '" + title + "', ";
 			sql += "nl_content = '" + content + "' ";
 			sql += "where nl_num = " + num;
+			System.out.println(sql);
 			
 			stmt = conn.createStatement();
 			result = stmt.executeUpdate(sql);
