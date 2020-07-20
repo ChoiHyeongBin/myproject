@@ -199,9 +199,11 @@ public class NoticeDAO {
 			String num = request.getParameter("num");
 			
 			String sql = "delete from t_notice_list where nl_num = " + num;
+			System.out.println(sql);
 			
 			stmt = conn.createStatement();
 			result = stmt.executeUpdate(sql);
+			
 		} catch (Exception e) {
 			System.out.println("deleteNotice() 메소드에서 오류 발생");
 		} finally {

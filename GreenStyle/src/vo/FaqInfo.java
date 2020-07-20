@@ -34,5 +34,4 @@ public class FaqInfo {
 	public void setFl_content(String fl_content) {
 		this.fl_content = fl_content;
 	}
-	
 }
