@@ -175,7 +175,7 @@ if (cpage == epage) {
 }
 %>
 </table>
-<br /><br /><br />
+<br /><br /><br />삭제삭제
 </div>
 </body>
 </html>
