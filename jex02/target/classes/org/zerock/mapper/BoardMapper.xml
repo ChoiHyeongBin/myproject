@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.BoardMapper">
+
+<select id="getList" resultType="org.zerock.domain.BoardVO">
+<![CDATA[
+select * from t_board where bno > 0
+]]>
+</select>
+<!-- CDATA : xml에서 부등호('>')를 사용하기 위해 필요 -->
+
+<insert id="insert">
+	insert into t_board (bno, title, content, writer) values (seq_board.nextval, #{title}, #{content}, #{writer})
+</insert>
+
+<insert id="insertSelectKey">
+
+	<selectKey keyProperty="bno" order="BEFORE" resultType="long">
+		select seq_board.nextval from dual
+		<!-- dual : 사용자가 함수(계산)를 실행할 때 임시로 사용함 -->
+	</selectKey>
+	
+	insert into t_board (bno, title, content, writer) values (#{bno}, #{title}, #{content}, #{writer})
+</insert>
+
+</mapper>
