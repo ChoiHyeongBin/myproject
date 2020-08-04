@@ -18,6 +18,7 @@ public class BoardMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private BoardMapper mapper;
 	
+	/*
 	@Test
 	public void testGetList() {
 		mapper.getList().forEach(board -> log.info(board));
@@ -45,5 +46,35 @@ public class BoardMapperTests {
 		mapper.insertSelectKey(board);
 		
 		log.info(board);
+	}
+	
+	@Test
+	public void testRead() {
+		
+		// 존재하는 게시물 번호로 테스트
+		BoardVO board = mapper.read(5L);	// read(7L) : 7번 게시물을 불러옴
+		
+		log.info(board);
+	}
+	
+	@Test
+	public void testDelete() {
+		
+		log.info("DELETE COUNT : " + mapper.delete(3L));
+	}
+	*/
+	
+	@Test
+	public void testUpdate() {
+		
+		BoardVO board = new BoardVO();
+		// 실행 전 존재하는 번호인지 확인할 것
+		board.setBno(5L);
+		board.setTitle("수정된 제목");
+		board.setContent("수정된 내용");
+		board.setWriter("user00");
+		
+		int count = mapper.update(board);
+		log.info("UPDATE COUNT : " + count);
 	}
 }
