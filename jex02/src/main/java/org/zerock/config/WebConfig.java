@@ -27,4 +27,14 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 		registration.setInitParameter("throwExceptionIfNoHandlerFound", "true");
 		
 	}
+	/*
+	@Override
+	protected javax.servlet.Filter[] getServletFilters() {
+		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+		characterEncodingFilter.setEncoding("UTF-8");
+		characterEncodingFilter.setForceEncoding(true);
+		
+		return (javax.servlet.Filter[]) new Filter[] { (Filter) characterEncodingFilter };
+	}
+	*/
 }

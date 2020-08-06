@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
  <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Tables</h1>
           <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
@@ -12,24 +16,28 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
+                      <th>#번호</th>
+                      <th>제목</th>
+                      <th>작성자</th>
+                      <th>작성일</th>
+                      <th>수정일</th>
                     </tr>
                   </thead>
-                  <tfoot>
-                    <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
-                    </tr>
-                  </tfoot>
+                 
+                  <c:forEach items="${list}" var="board">
+                  <tr>
+                      <td><c:out value="${board.bno}" /></td>
+                      <!-- 자바에서의 'System.out.println' 메서드와 비슷한 역할을 가지고 있음. 
+                      어떤 값을 입력받던지 간에 콘솔이 아닌 화면에 문자열로 바꾸어서 보여주는 역할 -->
+                      <td><c:out value="${board.title}" /></td>
+                      <td><c:out value="${board.writer}" /></td>
+                      <td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.regdate}" /></td>
+                      <td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.updateDate}" /></td>
+                      <!-- pattern : boolean(타입), 직접 파싱할 때 사용할 양식을 지정한다. 'java.text.DateFormat'에 있는 양식을 사용 -->
+                  </tr>
+                  </c:forEach>
+                  
+                  <!-- 	// Original 목록 리스트 데이터
                   <tbody>
                     <tr>
                       <td>Tiger Nixon</td>
@@ -488,6 +496,8 @@
                       <td>$112,000</td>
                     </tr>
                   </tbody>
+                   -->
+                   
                 </table>
               </div>
             </div>
@@ -527,7 +537,7 @@
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">�</span>
+            <span aria-hidden="true">×</span>
           </button>
         </div>
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
