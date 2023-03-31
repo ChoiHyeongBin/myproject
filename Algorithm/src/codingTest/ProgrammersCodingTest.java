@@ -38,7 +38,7 @@ public class ProgrammersCodingTest {
         	}
         }
         
-        System.out.println("answer22 : " + answer);
+        System.out.println("answer222 : " + answer);
         return answer;
     }
 	
